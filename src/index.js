@@ -112,11 +112,6 @@ app.delete("/todos/:id", checksExistsUserAccount, (request, response) => {
   const todos = request.user.todos;
   const { id } = request.params;
 
-  if (!id)
-    return response
-      .status(204)
-      .json({ error: `The id parameter was not informed.` });
-
   const removedTodo = todos.find((todo) => todo.id === id);
 
   if (!removedTodo)
